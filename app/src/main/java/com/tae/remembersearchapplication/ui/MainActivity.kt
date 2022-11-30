@@ -1,13 +1,23 @@
 package com.tae.remembersearchapplication.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.tae.baselibrary.BaseActivity
 import com.tae.remembersearchapplication.R
+import com.tae.remembersearchapplication.databinding.ActivityMainBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity<ActivityMainBinding, UserVMImpl>(R.layout.activity_main) {
+
+    override val viewModel: UserVMImpl by viewModel()
+
+    override fun initData() {
+
+    }
+
+    override fun initView() {
+
+    }
+
+    override fun eventObservers() {
+
     }
 }
