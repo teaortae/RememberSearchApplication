@@ -2,20 +2,13 @@ package com.tae.baselibrary.api
 
 class NetworkConst {
     companion object {
-        const val USER_AGENT = "User-Agent"
-        const val X_API_USER = "X-Api-User"
-        const val X_API_NONCE = "X-Api-Nonce"
-        const val X_API_TOKEN = "X-Api-Token"
-        const val X_API_KEY = "X-Api-Key"
-
         const val CONTENT_TYPE = "Content-Type"
+        const val AUTH = "Authorization"
+        const val ACCEPT = "Accept"
 
         var applicationJson = "application/json"
-        var userAgent = ""
-        var xApiUser = ""
-        var xApiNonce = ""
-        var xApiToken = ""
-        var xApiKey = ""
+        var applicationGJson = "application/vnd.github+json"
+        var token = "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"
 
         var SERVER_IP = ""
         var PORT = ""

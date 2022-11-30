@@ -1,10 +1,21 @@
 package com.tae.remembersearchapplication.modules
 
-import net.njobler.pref.Pref
+import androidx.room.Room
+import com.tae.remembersearchapplication.api.db.AppDatabase
 import org.koin.dsl.module
 
 object DataSource {
     val module = module {
-        single { Pref(get()) }
+        single {
+            Room.databaseBuilder(
+                get(),
+                AppDatabase::class.java, "github_user"
+            )
+                .fallbackToDestructiveMigration()
+                .build()
+        }
+        single {
+            get<AppDatabase>().userDao()
+        }
     }
 }

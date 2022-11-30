@@ -1,8 +1,5 @@
 package com.tae.baselibrary.modules
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.util.Log
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
@@ -13,14 +10,12 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 import com.tae.baselibrary.api.NetworkConst
-import com.tae.baselibrary.isOnline
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
-import java.net.UnknownHostException
 import java.util.concurrent.TimeUnit
 
 
@@ -107,12 +102,8 @@ open class HeaderSettingInterceptor : Interceptor {
     @Throws(Exception::class)
     fun Request.getHeader(): Headers {
         return headers.newBuilder()
-            .add(NetworkConst.CONTENT_TYPE, NetworkConst.applicationJson)
-            .add(NetworkConst.USER_AGENT, NetworkConst.userAgent)
-            .add(NetworkConst.X_API_USER, NetworkConst.xApiUser)
-            .add(NetworkConst.X_API_NONCE, NetworkConst.xApiNonce)
-            .add(NetworkConst.X_API_TOKEN, NetworkConst.xApiToken)
-            .add(NetworkConst.X_API_KEY, NetworkConst.xApiKey)
+            .add(NetworkConst.ACCEPT, NetworkConst.applicationGJson)
+            .add(NetworkConst.AUTH, NetworkConst.token)
             .build()
     }
 }

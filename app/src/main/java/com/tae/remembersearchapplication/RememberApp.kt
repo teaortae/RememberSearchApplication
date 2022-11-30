@@ -2,6 +2,7 @@ package com.tae.remembersearchapplication
 
 import android.app.Application
 import com.tae.baselibrary.BuildConfig
+import com.tae.baselibrary.api.NetworkConst
 import com.tae.baselibrary.modules.BaseRepositoryModule
 import com.tae.baselibrary.modules.BaseViewModelModule
 import com.tae.baselibrary.modules.NetworkModule
@@ -20,7 +21,7 @@ class RememberApp:Application() {
         super.onCreate()
         startKoin {
             androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
-            androidContext(this@RememberApp)
+            androidContext(androidContext = this@RememberApp)
             modules(
                 listOf(
                     NetworkModule.module,
@@ -33,5 +34,7 @@ class RememberApp:Application() {
                 )
             )
         }
+
+        NetworkConst.HTTP_URL = "https://api.github.com/"
     }
 }

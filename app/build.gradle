@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -40,6 +43,7 @@ dependencies {
     def gsonVersion = "2.9.0"
     def lifeCycleVersion = "2.5.1"
     def koinVersion = "3.1.5"
+    def room_version = "2.4.3"
 
     //datastore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
@@ -68,6 +72,12 @@ dependencies {
     //life cycle
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
+
+    //room
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
     implementation project(path: ':baseLibrary')
 

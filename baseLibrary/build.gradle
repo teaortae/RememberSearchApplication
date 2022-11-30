@@ -34,12 +34,12 @@ dependencies {
     def koinVersion = '3.1.5'
     def stethoVersion = "1.6.0"
     def gsonVersion = "2.9.0"
-    def appcompatVersion = "1.5.0"
-    def coreKtxVersion = "1.8.0"
+    def appcompatVersion = "1.5.1"
+    def coreKtxVersion = "1.9.0"
     def supportVersion = "1.0.0"
     def logVersion = "2.2.0"
 
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "androidx.core:core-ktx:$coreKtxVersion"
     implementation "androidx.legacy:legacy-support-v4:$supportVersion"
