@@ -1,6 +1,7 @@
 package com.tae.remembersearchapplication.api.db
 
 import androidx.room.*
+import java.time.ZoneId
 
 @Dao
 interface UserDao {
@@ -11,11 +12,9 @@ interface UserDao {
     suspend fun allUsers(): List<UserEntity>
 
     @Query("SELECT * FROM user " +
-                   "WHERE name LIKE :filter || '%' " +
-                   "OR surname LIKE :filter || '%' " +
-                   "OR email LIKE :filter || '%'")
+                   "WHERE login LIKE :filter || '%' ")
     fun usersWithFilter(filter: String): List<UserEntity>?
 
-    @Query("delete from user where email = :email")
-    suspend fun deleteUser(email: String)
+    @Query("delete from user where id = :id")
+    suspend fun deleteUser(id: String)
 }

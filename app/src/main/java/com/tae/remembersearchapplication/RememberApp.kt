@@ -1,6 +1,7 @@
 package com.tae.remembersearchapplication
 
 import android.app.Application
+import android.app.Dialog
 import com.tae.baselibrary.BuildConfig
 import com.tae.baselibrary.api.NetworkConst
 import com.tae.baselibrary.modules.BaseRepositoryModule
@@ -16,6 +17,14 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
 class RememberApp:Application() {
+    init {
+        INSTANCE = this
+    }
+
+    companion object {
+        lateinit var INSTANCE: RememberApp
+    }
+     var progressDialog: Dialog?=null
 
     override fun onCreate() {
         super.onCreate()

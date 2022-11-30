@@ -10,6 +10,7 @@ interface UserService {
     @GET(SEARCH_USER)
     suspend fun search(
         @Query("q") q: String,
+//        @Query("sort") sort: String = "desc",
         @Query("page") page: Int=1,
         @Query("per_page") perPage: Int=100
     ): Response<UserRes>
