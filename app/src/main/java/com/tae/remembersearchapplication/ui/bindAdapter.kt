@@ -5,6 +5,8 @@ import androidx.databinding.BindingAdapter
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.tae.remembersearchapplication.UserBindingModel_
+import com.tae.remembersearchapplication.UserHeaderBindingModel_
 import com.tae.remembersearchapplication.api.data.UserRes
 import com.tae.remembersearchapplication.user
 
@@ -20,13 +22,22 @@ fun userImg(imageView: ImageView, url: String?) {
 @BindingAdapter(value = ["setRecycler"])
 fun setRecycler(recyclerView: EpoxyRecyclerView, res: UserRes?) {
     recyclerView.withModels {
-        res?.items
-            ?.sortedBy { it.login.lowercase() }//소문자 변경후 소팅
+        res?.headerLetterList
+
             ?.map {
-                user {
-                    id(it.id)
-                    item(it)
-                }
+                //alphabet header
+                UserHeaderBindingModel_()
+                    .id(it.id)
+                    .item(it)
+                    .addIf(it.isHeader, this)
+
+                //user item
+                UserUIModel_()
+                    .id(it.id)
+                    .item(it)
+                    .checkListener {  }
+                    .addIf(! it.isHeader, this)
+
             }
     }
 }

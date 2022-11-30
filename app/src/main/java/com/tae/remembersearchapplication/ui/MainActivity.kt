@@ -1,5 +1,7 @@
 package com.tae.remembersearchapplication.ui
 
+import android.widget.CheckBox
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.tae.baselibrary.BaseActivity
 import com.tae.baselibrary.util.Log
 import com.tae.remembersearchapplication.R
@@ -25,7 +27,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserVMImpl>(R.layout.acti
     }
 
     override fun eventObservers() = with(viewModel) {
-
 
     }
 }

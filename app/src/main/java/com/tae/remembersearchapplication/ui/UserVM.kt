@@ -14,12 +14,16 @@ import okhttp3.ResponseBody
 
 interface UserVM {
     fun getUserInfo(context: Context, name: String)
+    fun onItemClick()
 }
 
 class UserVMImpl(private val repo: UserRepo) : BaseViewModel(), UserVM {
 
     private val _user = MutableLiveData<UserRes>()
     val userTask: LiveData<UserRes> = _user
+
+    private val _itemClick = MutableLiveData<Unit>()
+    val itemClickTask: LiveData<Unit> = _itemClick
 
     override fun getUserInfo(context: Context, name: String) {
         if(name.isEmpty()){
@@ -35,5 +39,9 @@ class UserVMImpl(private val repo: UserRepo) : BaseViewModel(), UserVM {
                 }
             }
             .launchIn(viewModelScope)
+    }
+
+    override fun onItemClick() {
+        _itemClick.value = Unit
     }
 }
