@@ -30,6 +30,6 @@ abstract class UserUIModel : ViewBindingEpoxyModelWithHolder<ItemUserBinding>() 
     }
 
     override fun ItemUserBinding.unbind() {
-        cbFav.isChecked = false
+
     }
 }

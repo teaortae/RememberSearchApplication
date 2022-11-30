@@ -24,19 +24,21 @@ fun setRecycler(recyclerView: EpoxyRecyclerView, res: UserRes?) {
     recyclerView.withModels {
         res?.headerLetterList
 
-            ?.map {
+            ?.map {user->
                 //alphabet header
                 UserHeaderBindingModel_()
-                    .id(it.id)
-                    .item(it)
-                    .addIf(it.isHeader, this)
+                    .id(user.id)
+                    .item(user)
+                    .addIf(user.isHeader, this)
 
                 //user item
                 UserUIModel_()
-                    .id(it.id)
-                    .item(it)
-                    .checkListener {  }
-                    .addIf(! it.isHeader, this)
+                    .id(user.id)
+                    .item(user)
+                    .checkListener {
+                        user.isChecked = it
+                    }
+                    .addIf(! user.isHeader, this)
 
             }
     }

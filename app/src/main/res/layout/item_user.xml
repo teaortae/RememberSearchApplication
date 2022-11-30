@@ -47,6 +47,7 @@
 
         <CheckBox
             android:id="@+id/cb_fav"
+            android:checked="@{item.checked}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/iv_avatar"

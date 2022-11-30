@@ -64,5 +64,6 @@ data class User(
     val site_admin: Boolean = false,
     val score: Double = .0,
     var header: String = "",
-    var isHeader: Boolean = false
+    var isHeader: Boolean = false,
+    var isChecked:Boolean = false
 )
