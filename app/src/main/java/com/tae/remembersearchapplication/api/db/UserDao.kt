@@ -1,12 +1,14 @@
 package com.tae.remembersearchapplication.api.db
 
 import androidx.room.*
-import java.time.ZoneId
 
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUsers(item: List<UserEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertUser(item: UserEntity)
 
     @Query("select * from user")
     suspend fun allUsers(): List<UserEntity>

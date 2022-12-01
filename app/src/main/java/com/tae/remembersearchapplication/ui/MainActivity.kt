@@ -1,14 +1,10 @@
 package com.tae.remembersearchapplication.ui
 
-import android.widget.CheckBox
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.tae.baselibrary.BaseActivity
-import com.tae.baselibrary.util.Log
 import com.tae.remembersearchapplication.R
 import com.tae.remembersearchapplication.RememberApp
 import com.tae.remembersearchapplication.databinding.ActivityMainBinding
 import com.tae.remembersearchapplication.ext.progressDialog
-import com.tae.remembersearchapplication.user
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, UserVMImpl>(R.layout.activity_main) {
@@ -24,9 +20,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, UserVMImpl>(R.layout.acti
         RememberApp.INSTANCE.progressDialog = progressDialog()
 
         binding.model = viewModel
+        binding.rvUser.itemAnimator = null
     }
 
     override fun eventObservers() = with(viewModel) {
-
+        userTask.observe(this@MainActivity) {
+            binding.list = it.withHeader
+            binding.adapter = UserAdapter()
+        }
     }
 }

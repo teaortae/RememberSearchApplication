@@ -13,10 +13,8 @@ data class UserRes(
     val incompleteResults: Boolean? = false,
     val items: ArrayList<User> = arrayListOf()
 ) {
-    val headerLetterList: List<User>
-        get() {
-            return getHeaderLetter(items)
-        }
+    val withHeader: List<User>
+        get() = getHeaderLetter(items)
 
     private fun getHeaderLetter(usersList: ArrayList<User>): List<User> {
         val mSectionList: ArrayList<User> = arrayListOf()
@@ -65,5 +63,4 @@ data class User(
     val score: Double = .0,
     var header: String = "",
     var isHeader: Boolean = false,
-    var isChecked:Boolean = false
 )

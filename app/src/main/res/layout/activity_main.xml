@@ -5,6 +5,16 @@
 
         <import type="android.view.View" />
 
+        <import type="java.util.List" />
+
+        <variable
+            name="adapter"
+            type="com.tae.remembersearchapplication.ui.UserAdapter" />
+
+        <variable
+            name="list"
+            type="List&lt;com.tae.remembersearchapplication.api.data.User>" />
+
         <variable
             name="model"
             type="com.tae.remembersearchapplication.ui.UserVMImpl" />
@@ -37,16 +47,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.airbnb.epoxy.EpoxyRecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_user"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:adapter="@{adapter}"
+            app:data="@{list}"
             tools:listitem="@layout/item_user"
-            app:setRecycler="@{model.userTask}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_user_name" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

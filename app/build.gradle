@@ -52,12 +52,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
-    //epoxy
-    implementation "com.airbnb.android:epoxy:4.3.1"
-    kapt "com.airbnb.android:epoxy-processor:4.3.1"
-    implementation "com.airbnb.android:epoxy-databinding:4.3.1"
-    implementation 'com.airbnb.android:epoxy:4.3.1'
-
     //di koin
     implementation "io.insert-koin:koin-core:$koinVersion"
     implementation "io.insert-koin:koin-android:$koinVersion"
