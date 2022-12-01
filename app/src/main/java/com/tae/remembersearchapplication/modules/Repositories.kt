@@ -5,6 +5,6 @@ import org.koin.dsl.module
 
 object Repositories {
     val module = module {
-        single { UserRepo(get()) }
+        single { UserRepo(get(),get()) }
     }
 }

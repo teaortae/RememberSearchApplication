@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 
-inline fun <reified T : Any> Flow<ApiResult<T>?>.loading(): Flow<ApiResult<T>?> {
+inline fun <reified T : Any> Flow<T?>.loading(): Flow<T?> {
     val dialog = RememberApp.INSTANCE.progressDialog
     return onStart { dialog?.show() }
         .onCompletion {
