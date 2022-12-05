@@ -1,4 +1,4 @@
-package com.tae.remembersearchapplication.api.db
+package com.tae.remembersearchapplication.tab2DB.db
 
 import androidx.room.*
 
@@ -18,5 +18,5 @@ interface UserDao {
     fun usersWithFilter(filter: String): List<UserEntity>?
 
     @Query("delete from user where id = :id")
-    suspend fun deleteUser(id: String)
+    suspend fun deleteUser(id: Int)
 }

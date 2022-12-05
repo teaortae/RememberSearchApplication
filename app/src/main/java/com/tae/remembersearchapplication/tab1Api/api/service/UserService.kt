@@ -1,6 +1,6 @@
-package com.tae.remembersearchapplication.api.service
+package com.tae.remembersearchapplication.tab1Api.api.service
 
-import com.tae.remembersearchapplication.api.data.UserRes
+import com.tae.remembersearchapplication.tab1Api.api.data.UserRes
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

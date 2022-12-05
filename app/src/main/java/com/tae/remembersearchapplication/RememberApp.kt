@@ -16,7 +16,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
-class RememberApp:Application() {
+class RememberApp : Application() {
     init {
         INSTANCE = this
     }
@@ -24,7 +24,8 @@ class RememberApp:Application() {
     companion object {
         lateinit var INSTANCE: RememberApp
     }
-     var progressDialog: Dialog?=null
+
+    var progressDialog: Dialog? = null
 
     override fun onCreate() {
         super.onCreate()

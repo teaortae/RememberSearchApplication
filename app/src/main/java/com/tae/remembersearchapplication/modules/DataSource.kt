@@ -1,7 +1,7 @@
 package com.tae.remembersearchapplication.modules
 
 import androidx.room.Room
-import com.tae.remembersearchapplication.api.db.AppDatabase
+import com.tae.remembersearchapplication.tab2DB.db.AppDatabase
 import org.koin.dsl.module
 
 object DataSource {

@@ -1,25 +1,29 @@
-package com.tae.remembersearchapplication.ui
+package com.tae.remembersearchapplication.tab2DB.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tae.remembersearchapplication.api.data.User
-import com.tae.remembersearchapplication.databinding.ItemUserBinding
+import com.tae.remembersearchapplication.databinding.ItemUserDbBinding
 import com.tae.remembersearchapplication.databinding.ItemUserHeaderBinding
+import com.tae.remembersearchapplication.tab1Api.api.data.User
+import com.tae.remembersearchapplication.tab1Api.ui.OnCheckChangeListener
+import com.tae.remembersearchapplication.tab2DB.db.UserEntity
 
-class UserAdapter : ListAdapter<User, RecyclerView.ViewHolder>(UserDiffUtil()) {
+class UserDBAdapter : ListAdapter<UserEntity, RecyclerView.ViewHolder>(UserDBDiffUtil()) {
 
     companion object {
         const val TYPE_ITEM = 1
         const val TYPE_HEADER = 2
     }
 
+    var onCheckChangeListener: OnCheckChangeListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             TYPE_ITEM -> ItemViewHolder(
-                ItemUserBinding.inflate(
+                ItemUserDbBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -42,28 +46,41 @@ class UserAdapter : ListAdapter<User, RecyclerView.ViewHolder>(UserDiffUtil()) {
         }
     }
 
-    private fun onBindItemViewHolder(holder: ItemViewHolder, item: User) {
+    private fun onBindItemViewHolder(holder: ItemViewHolder, item: UserEntity) {
         holder.bind(item)
     }
 
-    private fun onBindHeaderItemViewHolder(holder: HeaderItemViewHolder, item: User) {
+    private fun onBindHeaderItemViewHolder(holder: HeaderItemViewHolder, item: UserEntity) {
         holder.bind(item)
     }
 
-    inner class ItemViewHolder(private val binding: ItemUserBinding) :
+    inner class ItemViewHolder(private val binding: ItemUserDbBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
+        fun bind(user: UserEntity) {
             binding.apply {
                 item = user
-                constraintMain.setOnClickListener { cbFav.isChecked = ! cbFav.isChecked }
+                root.setOnClickListener {
+                    user.isChecked = ! user.isChecked
+                    notifyItemChanged(adapterPosition)
+                    onCheckChangeListener?.onCheckChange(
+                        User(
+                            login = user.login,
+                            id = user.id,
+                            avatar_url = user.avatar_url,
+                            header = user.header,
+                            isHeader = user.isHeader,
+                            isChecked = user.isChecked
+                        )
+                    )
+                }
             }
         }
     }
 
     inner class HeaderItemViewHolder(private val binding: ItemUserHeaderBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
-            binding.item = user
+        fun bind(user: UserEntity) {
+            binding.header = user.header
         }
     }
 
@@ -72,12 +89,12 @@ class UserAdapter : ListAdapter<User, RecyclerView.ViewHolder>(UserDiffUtil()) {
     }
 }
 
-class UserDiffUtil : DiffUtil.ItemCallback<User>() {
-    override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+class UserDBDiffUtil : DiffUtil.ItemCallback<UserEntity>() {
+    override fun areItemsTheSame(oldItem: UserEntity, newItem: UserEntity): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+    override fun areContentsTheSame(oldItem: UserEntity, newItem: UserEntity): Boolean {
         return oldItem == newItem
     }
 

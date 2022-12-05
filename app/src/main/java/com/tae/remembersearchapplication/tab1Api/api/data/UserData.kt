@@ -1,6 +1,5 @@
-package com.tae.remembersearchapplication.api.data
+package com.tae.remembersearchapplication.tab1Api.api.data
 
-import android.text.TextUtils
 import com.google.gson.annotations.SerializedName
 import java.util.*
 import kotlin.collections.ArrayList
@@ -63,4 +62,5 @@ data class User(
     val score: Double = .0,
     var header: String = "",
     var isHeader: Boolean = false,
+    var isChecked:Boolean = false
 )

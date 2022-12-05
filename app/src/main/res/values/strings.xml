@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">RememberSearchApplication</string>
+    <string name="app_name">GitHub Stars</string>
+    <string name="hint_search_text">검색어를 입력하세요</string>
 </resources>

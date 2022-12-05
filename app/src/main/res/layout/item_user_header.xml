@@ -6,8 +6,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="item"
-            type="com.tae.remembersearchapplication.api.data.User" />
+            name="header"
+            type="String" />
 
     </data>
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             tools:text="A"
-            android:text="@{item.header}"
+            android:text="@{header}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

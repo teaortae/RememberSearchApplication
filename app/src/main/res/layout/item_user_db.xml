@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.tae.remembersearchapplication.tab1Api.api.data.User" />
+            type="com.tae.remembersearchapplication.tab2DB.db.UserEntity" />
 
     </data>
 
@@ -22,8 +22,8 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_avatar"
             android:layout_width="0dp"
-            android:layout_height="70dp"
             android:layout_marginStart="5dp"
+            android:layout_height="70dp"
             android:layout_marginTop="5dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,12 +48,9 @@
 
         <CheckBox
             android:id="@+id/cb_fav"
+            android:checked="@{item.checked}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:checked="@{item.checked}"
             app:layout_constraintBottom_toBottomOf="@id/iv_avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/iv_avatar" />

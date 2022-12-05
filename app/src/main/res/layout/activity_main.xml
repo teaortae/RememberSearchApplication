@@ -9,15 +9,15 @@
 
         <variable
             name="adapter"
-            type="com.tae.remembersearchapplication.ui.UserAdapter" />
+            type="com.tae.remembersearchapplication.tab1Api.ui.UserAdapter" />
 
         <variable
             name="list"
-            type="List&lt;com.tae.remembersearchapplication.api.data.User>" />
+            type="com.tae.remembersearchapplication.tab1Api.api.data.User" />
 
         <variable
             name="model"
-            type="com.tae.remembersearchapplication.ui.UserVMImpl" />
+            type="com.tae.remembersearchapplication.main.MainVMImpl" />
 
     </data>
 
@@ -27,7 +27,7 @@
         android:id="@+id/constraint_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
+        tools:context=".main.MainActivity">
 
 
         <com.google.android.material.tabs.TabLayout

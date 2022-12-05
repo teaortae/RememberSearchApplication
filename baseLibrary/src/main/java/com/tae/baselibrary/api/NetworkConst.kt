@@ -8,7 +8,7 @@ class NetworkConst {
 
         var applicationJson = "application/json"
         var applicationGJson = "application/vnd.github+json"
-        var token = "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"
+        var token = "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" // git temp access token
 
         var SERVER_IP = ""
         var PORT = ""

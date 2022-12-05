@@ -9,15 +9,15 @@
 
         <variable
             name="adapter"
-            type="com.tae.remembersearchapplication.tab1Api.ui.UserAdapter" />
+            type="com.tae.remembersearchapplication.tab2DB.ui.UserDBAdapter" />
 
         <variable
             name="list"
-            type="List&lt;com.tae.remembersearchapplication.tab1Api.api.data.User>" />
+            type="List&lt;com.tae.remembersearchapplication.tab2DB.db.UserEntity>" />
 
         <variable
             name="model"
-            type="com.tae.remembersearchapplication.tab1Api.Tab1VMImpl" />
+            type="com.tae.remembersearchapplication.tab2DB.Tab2DBVMImpl" />
 
     </data>
 
@@ -28,7 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".main.MainActivity">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_et"
@@ -63,19 +62,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_user"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:paddingTop="5dp"
             app:adapter="@{adapter}"
             app:data="@{list}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraint_et"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_et"
             tools:listitem="@layout/item_user" />
 
 
