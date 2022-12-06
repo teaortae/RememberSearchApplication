@@ -31,6 +31,7 @@ class Tab1APIFragment : BaseFragment<ApiFragmentBinding, Tab1VMImpl>(R.layout.ap
         //api user search list observer
         val userList = mutableListOf<User>()
         userTask.observe(viewLifecycleOwner) {
+            if(it.items.isNullOrEmpty()) showToast("검색 결과가 없습니다.")
             userList.clear()
             userList.addAll(it.withHeader)
             binding.list = userList

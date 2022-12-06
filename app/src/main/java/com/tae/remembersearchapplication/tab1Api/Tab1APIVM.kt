@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.tae.baselibrary.api.ApiResult
 import com.tae.baselibrary.util.Log
 import com.tae.baselibrary.viewmodel.BaseViewModel
+import com.tae.remembersearchapplication.RememberApp
 import com.tae.remembersearchapplication.tab1Api.api.data.User
 import com.tae.remembersearchapplication.tab1Api.api.data.UserRes
 import com.tae.remembersearchapplication.tab1Api.ui.OnCheckChangeListener
@@ -69,6 +70,7 @@ class Tab1VMImpl(private val repo: Tab1APIRepo) : BaseViewModel(), Tab1VM, OnChe
                     )
                 )
             else repo.deleteUser(user.id)
+            RememberApp.INSTANCE.needRefresh = true
         }
     }
 

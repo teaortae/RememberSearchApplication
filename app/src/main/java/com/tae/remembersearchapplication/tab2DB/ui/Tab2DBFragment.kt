@@ -5,6 +5,7 @@ import com.tae.baselibrary.ext.hideKeyboard
 import com.tae.baselibrary.ui.BaseFragment
 import com.tae.baselibrary.util.Log
 import com.tae.remembersearchapplication.R
+import com.tae.remembersearchapplication.RememberApp
 import com.tae.remembersearchapplication.databinding.DbFragmentBinding
 import com.tae.remembersearchapplication.ext.showDialog
 import com.tae.remembersearchapplication.tab2DB.Tab2DBVMImpl
@@ -39,6 +40,14 @@ class Tab2DBFragment : BaseFragment<DbFragmentBinding, Tab2DBVMImpl>(R.layout.db
 
         alertTask.observe(viewLifecycleOwner){
             showToast("검색어를 입력하세요.")
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (RememberApp.INSTANCE.needRefresh) {
+            viewModel.getUserInfo(viewModel.userName)
+            RememberApp.INSTANCE.needRefresh = false
         }
     }
 
