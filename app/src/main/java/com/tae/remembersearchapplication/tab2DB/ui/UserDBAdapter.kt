@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tae.remembersearchapplication.databinding.ItemUserDbBinding
 import com.tae.remembersearchapplication.databinding.ItemUserHeaderBinding
 import com.tae.remembersearchapplication.tab1Api.api.data.User
-import com.tae.remembersearchapplication.tab1Api.ui.OnCheckChangeListener
 import com.tae.remembersearchapplication.tab2DB.db.UserEntity
 
 class UserDBAdapter : ListAdapter<UserEntity, RecyclerView.ViewHolder>(UserDBDiffUtil()) {
@@ -98,4 +97,8 @@ class UserDBDiffUtil : DiffUtil.ItemCallback<UserEntity>() {
         return oldItem == newItem
     }
 
+}
+
+interface OnCheckChangeListener{
+    fun onCheckChange(user: User)
 }

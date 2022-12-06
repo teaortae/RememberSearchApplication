@@ -1,17 +1,20 @@
 package com.tae.remembersearchapplication.tab1Api.ui
 
 import android.os.Bundle
+import androidx.lifecycle.asFlow
 import com.tae.baselibrary.ui.BaseFragment
 import com.tae.remembersearchapplication.R
+import com.tae.remembersearchapplication.RememberApp
 import com.tae.remembersearchapplication.databinding.ApiFragmentBinding
+import com.tae.remembersearchapplication.ext.showDialog
 import com.tae.remembersearchapplication.tab1Api.Tab1VMImpl
 import com.tae.remembersearchapplication.tab1Api.api.data.User
+import kotlinx.coroutines.flow.combine
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class Tab1APIFragment : BaseFragment<ApiFragmentBinding, Tab1VMImpl>(R.layout.api_fragment) {
 
     private var userAdapter: UserAdapter? = null
-    private var userList = listOf<User>()
     override val viewModel: Tab1VMImpl by viewModel()
     override fun initData(savedInstanceState: Bundle?) {
 
@@ -26,16 +29,26 @@ class Tab1APIFragment : BaseFragment<ApiFragmentBinding, Tab1VMImpl>(R.layout.ap
 
     override fun eventObservers() = with(viewModel) {
         //api user search list observer
+        val userList = mutableListOf<User>()
         userTask.observe(viewLifecycleOwner) {
-            userList = it.withHeader
-            binding.list = it.withHeader
+            userList.clear()
+            userList.addAll(it.withHeader)
+            binding.list = userList
             binding.adapter = userAdapter
+            binding.etUserName.clearFocus()
+            binding.rvUser.scrollToPosition(0)
         }
-        userFromDbTask.observe(viewLifecycleOwner) {
-            it.forEach {entity->
-                userList.any {a-> a.id == entity.id }
 
-            }
+        alertTask.observe(viewLifecycleOwner){
+            showToast("검색어를 입력하세요.")
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (RememberApp.INSTANCE.needRefresh) {
+            viewModel.getUserInfo(viewModel.userName)
+            RememberApp.INSTANCE.needRefresh = false
         }
     }
 

@@ -2,6 +2,8 @@ package com.tae.remembersearchapplication
 
 import android.app.Application
 import android.app.Dialog
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 import com.tae.baselibrary.BuildConfig
 import com.tae.baselibrary.api.NetworkConst
 import com.tae.baselibrary.modules.BaseRepositoryModule
@@ -17,6 +19,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
 class RememberApp : Application() {
+
     init {
         INSTANCE = this
     }
@@ -26,6 +29,7 @@ class RememberApp : Application() {
     }
 
     var progressDialog: Dialog? = null
+    var needRefresh = false
 
     override fun onCreate() {
         super.onCreate()
@@ -46,5 +50,11 @@ class RememberApp : Application() {
         }
 
         NetworkConst.HTTP_URL = "https://api.github.com/"
+
+        Logger.addLogAdapter(object : AndroidLogAdapter() {
+            override fun isLoggable(priority: Int, tag: String?): Boolean {
+                return BuildConfig.DEBUG
+            }
+        })
     }
 }

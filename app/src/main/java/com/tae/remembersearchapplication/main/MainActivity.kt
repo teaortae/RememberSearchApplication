@@ -10,11 +10,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainVMImpl>(R.layout.activity_main) {
 
-    override val viewModel: MainVMImpl by viewModel()
     private val tabTitleArray = arrayOf(
         "API",
         "로컬",
     )
+
+    override val viewModel: MainVMImpl by viewModel()
 
     override fun initData() {
 

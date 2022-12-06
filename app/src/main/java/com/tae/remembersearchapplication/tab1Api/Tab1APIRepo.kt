@@ -23,6 +23,10 @@ class Tab1APIRepo(private val api: UserService, private val db: AppDatabase) : B
         db.userDao().insertUser(userEntity)
     }
 
+    suspend fun deleteUser(id: Int) {
+        db.userDao().deleteUser(id)
+    }
+
     fun getAllUser(): Flow<List<UserEntity>?> = flow {
         emit(db.userDao().allUsers())
     }.flowOn(Dispatchers.IO).loading()
